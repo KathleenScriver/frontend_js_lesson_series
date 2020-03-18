@@ -6,9 +6,23 @@
     <title>Article Party</title>
 </head>
 <body>
+    
     <h1>Authors</h1>
 
     <p id='authors'></p>
+
+    <h3>Add a New Article</h3>
+
+    <form method='POST' action='http://localhost:3000/articles'>
+        <input type='text' name='title' placeholder='Add title of article' />
+
+        <select id='author-list' name='author_id'> </select>
+
+        <select id='magazine-list' name='magazine_id'></select>
+
+        <input type='submit' value='Add Article' />
+    </form>
+
     
     <script src='./app.js'></script>
 </body>

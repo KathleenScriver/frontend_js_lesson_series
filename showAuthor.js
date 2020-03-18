@@ -1,6 +1,6 @@
 const params = window.location.search
 const searchParams = new URLSearchParams(params)
-const id = searchParams.get('name')
+const id = searchParams.get('id')
 
 fetch(`http://localhost:3000/authors/${id}`)
     .then(response => response.json())
@@ -20,7 +20,7 @@ function showArticles(articles){
 
     articles.forEach(article => {
         const articleTitle = document.createElement('li')
-        articleTitle.innerHTLM =`<a href='showArticle.html?id=${article.id}'>${article.title}</a>`
+        articleTitle.innerHTML =`<a href='showArticle.html?id=${article.id}'>${article.title}</a>`
         articleContainer.append(articleTitle)
     })
 }
