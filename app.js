@@ -8,6 +8,7 @@ fetch("http://localhost:3000/authors")
         const authorDropdown = document.querySelector('#author-list')
         
         authors.forEach(author => {
+            console.log("single author", author)
             const newAuthor = document.createElement('h4')
             newAuthor.innerHTML = `<a href='showAuthor.html?id=${author.id}'>${author.name}</a>`
             authorSection.append(newAuthor)
@@ -15,6 +16,7 @@ fetch("http://localhost:3000/authors")
             const authorList = document.createElement('option')
             authorList.innerText = author.name
             authorList.value = author.id
+
             authorDropdown.append(authorList)
         }) 
     }

@@ -1,26 +1,30 @@
-const params = window.location.search
-const searchParams = new URLSearchParams(params)
-const id = searchParams.get('id')
+const search = new URLSearchParams(window.location.search)
+const id = search.get('id')
 
 fetch(`http://localhost:3000/authors/${id}`)
     .then(response => response.json())
-    .then(author => showAuthor(author))
+    .then(author => displayAuthor(author))
 
-function showAuthor(author){
-    const title = document.querySelector('#name')
-    const newAuthor = document.createElement('h1')
-    newAuthor.innerText = author.name
-    title.append(newAuthor)
+function displayAuthor(author){
+    const title = document.querySelector('h1')
 
-    showArticles(author.articles)
+    const name = document.createElement('h3') 
+    const age = document.createElement('p')
+
+    name.innerText = author.name
+    age.innerText = author.age
+
+    title.append(name, age)
+
+    displayArticles(author.articles)
 }
 
-function showArticles(articles){
-    const articleContainer = document.querySelector('#articles')
+function displayArticles(articles){
+    const articleList = document.querySelector('#article-list')
 
     articles.forEach(article => {
-        const articleTitle = document.createElement('li')
-        articleTitle.innerHTML =`<a href='showArticle.html?id=${article.id}'>${article.title}</a>`
-        articleContainer.append(articleTitle)
+        const articleTitle = document.createElement('p')
+        articleTitle.innerHTML = `<a href='showArticle.html?id=${article.id}'>${article.title}</a>`
+        articleList.append(articleTitle)
     })
 }
